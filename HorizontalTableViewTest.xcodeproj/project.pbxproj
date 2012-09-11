@@ -15,6 +15,8 @@
 		5003961E15FF419C003B7894 /* UMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003961D15FF419C003B7894 /* UMAppDelegate.m */; };
 		5003962115FF419C003B7894 /* UMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003962015FF419C003B7894 /* UMViewController.m */; };
 		5003962415FF419C003B7894 /* UMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5003962215FF419C003B7894 /* UMViewController.xib */; };
+		5003963415FF41C3003B7894 /* HTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003962D15FF41C3003B7894 /* HTableView.m */; };
+		5003963515FF41C3003B7894 /* HTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003963015FF41C3003B7894 /* HTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +24,19 @@
 		5003960D15FF419C003B7894 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5003960F15FF419C003B7894 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5003961115FF419C003B7894 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		5003961515FF419C003B7894 /* HorizontalTableViewTest-Info.plist */ = {isa = PBXFileReference; path = "HorizontalTableViewTest-Info.plist"; sourceTree = "<group>"; };
+		5003961515FF419C003B7894 /* HorizontalTableViewTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HorizontalTableViewTest-Info.plist"; sourceTree = "<group>"; };
 		5003961715FF419C003B7894 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5003961915FF419C003B7894 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5003961B15FF419C003B7894 /* HorizontalTableViewTest-Prefix.pch */ = {isa = PBXFileReference; path = "HorizontalTableViewTest-Prefix.pch"; sourceTree = "<group>"; };
-		5003961C15FF419C003B7894 /* UMAppDelegate.h */ = {isa = PBXFileReference; path = UMAppDelegate.h; sourceTree = "<group>"; };
+		5003961B15FF419C003B7894 /* HorizontalTableViewTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HorizontalTableViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		5003961C15FF419C003B7894 /* UMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMAppDelegate.h; sourceTree = "<group>"; };
 		5003961D15FF419C003B7894 /* UMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAppDelegate.m; sourceTree = "<group>"; };
-		5003961F15FF419C003B7894 /* UMViewController.h */ = {isa = PBXFileReference; path = UMViewController.h; sourceTree = "<group>"; };
+		5003961F15FF419C003B7894 /* UMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMViewController.h; sourceTree = "<group>"; };
 		5003962015FF419C003B7894 /* UMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMViewController.m; sourceTree = "<group>"; };
 		5003962315FF419C003B7894 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UMViewController.xib; sourceTree = "<group>"; };
+		5003962C15FF41C3003B7894 /* HTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableView.h; sourceTree = "<group>"; };
+		5003962D15FF41C3003B7894 /* HTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableView.m; sourceTree = "<group>"; };
+		5003962F15FF41C3003B7894 /* HTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTableViewCell.h; sourceTree = "<group>"; };
+		5003963015FF41C3003B7894 /* HTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +56,7 @@
 		500395FE15FF419B003B7894 = {
 			isa = PBXGroup;
 			children = (
+				5003962A15FF41C3003B7894 /* Horizontal Table View */,
 				5003961315FF419C003B7894 /* HorizontalTableViewTest */,
 				5003960C15FF419C003B7894 /* Frameworks */,
 				5003960A15FF419C003B7894 /* Products */,
@@ -96,6 +103,33 @@
 				5003961B15FF419C003B7894 /* HorizontalTableViewTest-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5003962A15FF41C3003B7894 /* Horizontal Table View */ = {
+			isa = PBXGroup;
+			children = (
+				5003962B15FF41C3003B7894 /* HTableView */,
+				5003962E15FF41C3003B7894 /* HTableViewCell */,
+			);
+			path = "Horizontal Table View";
+			sourceTree = "<group>";
+		};
+		5003962B15FF41C3003B7894 /* HTableView */ = {
+			isa = PBXGroup;
+			children = (
+				5003962C15FF41C3003B7894 /* HTableView.h */,
+				5003962D15FF41C3003B7894 /* HTableView.m */,
+			);
+			path = HTableView;
+			sourceTree = "<group>";
+		};
+		5003962E15FF41C3003B7894 /* HTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5003962F15FF41C3003B7894 /* HTableViewCell.h */,
+				5003963015FF41C3003B7894 /* HTableViewCell.m */,
+			);
+			path = HTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +197,8 @@
 				5003961A15FF419C003B7894 /* main.m in Sources */,
 				5003961E15FF419C003B7894 /* UMAppDelegate.m in Sources */,
 				5003962115FF419C003B7894 /* UMViewController.m in Sources */,
+				5003963415FF41C3003B7894 /* HTableView.m in Sources */,
+				5003963515FF41C3003B7894 /* HTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
