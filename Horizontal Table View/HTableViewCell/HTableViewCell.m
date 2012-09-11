@@ -12,6 +12,7 @@
 @implementation HTableViewCell
 
 @synthesize delegate = _delegate;
+@synthesize index = _index;
 
 #pragma mark - Tap Gesture Methods
 

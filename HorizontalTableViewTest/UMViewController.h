@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTableView.h"
 
-@interface UMViewController : UIViewController
+@interface UMViewController : UIViewController <HTableViewDataSource, HTableViewDelegate>
 
 @end

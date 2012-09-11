@@ -22,11 +22,14 @@
     return [self indexAtPosition:INDEX_AT_POSITION];
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"IndexPath Column : %d", self.column];
+}
+
 @end
 
 @interface HTableView ()
-
-@property (nonatomic) CGFloat columnWidth;
 
 @end
 
@@ -34,7 +37,6 @@
 
 @synthesize dataSource = _dataSource;
 @synthesize delegate = _delegate;
-@synthesize columnWidth = _columnWidth;
 
 #pragma mark - Custom Methods
 
@@ -51,17 +53,22 @@
     for (int index = 0; index < cellCount; index++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForColumn:index];
         
+        HTableViewCell *tableViewCell = [self.dataSource hTableView:self cellForColumnAtIndexPath:_indexPath];
+        
+        NSInteger _columnWidth;
         if ([self.dataSource respondsToSelector:@selector(hTableView:widthForColumnAtIndexPath:)])
             _columnWidth = [self.dataSource hTableView:self widthForColumnAtIndexPath:_indexPath];
+        else
+            _columnWidth = tableViewCell.frame.size.width;
         
-        HTableViewCell *tableViewCell = [self.dataSource hTableView:self cellForColumnAtIndexPath:_indexPath];
+        CGSize _scrollViewContentSize = _horizontalScrollView.contentSize;
+        
         tableViewCell.delegate = self;
-        tableViewCell.tag = index + 1;
-        tableViewCell.frame = CGRectMake((index * tableViewCell.frame.size.width), _horizontalScrollView.bounds.origin.y, tableViewCell.frame.size.width, _horizontalScrollView.bounds.size.height);
+        tableViewCell.index = index + 1;
+        tableViewCell.frame = CGRectMake(_scrollViewContentSize.width, _horizontalScrollView.bounds.origin.y, _columnWidth, _horizontalScrollView.bounds.size.height);
         
         [_horizontalScrollView addSubview:tableViewCell];
         
-        CGSize _scrollViewContentSize = _horizontalScrollView.contentSize;
         _scrollViewContentSize.width += tableViewCell.frame.size.width;
         _horizontalScrollView.contentSize = _scrollViewContentSize;
     }
@@ -76,7 +83,7 @@
 
 - (void)didTapHTableViewCell:(HTableViewCell *)hTableViewCell
 {
-    [self.delegate hTableView:self didSelectColumnAtIndexPath:[NSIndexPath indexPathForColumn:(hTableViewCell.tag - 1)]];
+    [self.delegate hTableView:self didSelectColumnAtIndexPath:[NSIndexPath indexPathForColumn:(hTableViewCell.index - 1)]];
 }
 
 #pragma mark - Initialization
