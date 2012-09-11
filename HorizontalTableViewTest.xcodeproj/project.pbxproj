@@ -1,0 +1,279 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5003960E15FF419C003B7894 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5003960D15FF419C003B7894 /* UIKit.framework */; };
+		5003961015FF419C003B7894 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5003960F15FF419C003B7894 /* Foundation.framework */; };
+		5003961215FF419C003B7894 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5003961115FF419C003B7894 /* CoreGraphics.framework */; };
+		5003961815FF419C003B7894 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5003961615FF419C003B7894 /* InfoPlist.strings */; };
+		5003961A15FF419C003B7894 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003961915FF419C003B7894 /* main.m */; };
+		5003961E15FF419C003B7894 /* UMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003961D15FF419C003B7894 /* UMAppDelegate.m */; };
+		5003962115FF419C003B7894 /* UMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5003962015FF419C003B7894 /* UMViewController.m */; };
+		5003962415FF419C003B7894 /* UMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5003962215FF419C003B7894 /* UMViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5003960915FF419C003B7894 /* HorizontalTableViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorizontalTableViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5003960D15FF419C003B7894 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5003960F15FF419C003B7894 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5003961115FF419C003B7894 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5003961515FF419C003B7894 /* HorizontalTableViewTest-Info.plist */ = {isa = PBXFileReference; path = "HorizontalTableViewTest-Info.plist"; sourceTree = "<group>"; };
+		5003961715FF419C003B7894 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5003961915FF419C003B7894 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5003961B15FF419C003B7894 /* HorizontalTableViewTest-Prefix.pch */ = {isa = PBXFileReference; path = "HorizontalTableViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		5003961C15FF419C003B7894 /* UMAppDelegate.h */ = {isa = PBXFileReference; path = UMAppDelegate.h; sourceTree = "<group>"; };
+		5003961D15FF419C003B7894 /* UMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMAppDelegate.m; sourceTree = "<group>"; };
+		5003961F15FF419C003B7894 /* UMViewController.h */ = {isa = PBXFileReference; path = UMViewController.h; sourceTree = "<group>"; };
+		5003962015FF419C003B7894 /* UMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMViewController.m; sourceTree = "<group>"; };
+		5003962315FF419C003B7894 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/UMViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5003960615FF419C003B7894 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5003960E15FF419C003B7894 /* UIKit.framework in Frameworks */,
+				5003961015FF419C003B7894 /* Foundation.framework in Frameworks */,
+				5003961215FF419C003B7894 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		500395FE15FF419B003B7894 = {
+			isa = PBXGroup;
+			children = (
+				5003961315FF419C003B7894 /* HorizontalTableViewTest */,
+				5003960C15FF419C003B7894 /* Frameworks */,
+				5003960A15FF419C003B7894 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5003960A15FF419C003B7894 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5003960915FF419C003B7894 /* HorizontalTableViewTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5003960C15FF419C003B7894 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5003960D15FF419C003B7894 /* UIKit.framework */,
+				5003960F15FF419C003B7894 /* Foundation.framework */,
+				5003961115FF419C003B7894 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5003961315FF419C003B7894 /* HorizontalTableViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				5003961C15FF419C003B7894 /* UMAppDelegate.h */,
+				5003961D15FF419C003B7894 /* UMAppDelegate.m */,
+				5003961F15FF419C003B7894 /* UMViewController.h */,
+				5003962015FF419C003B7894 /* UMViewController.m */,
+				5003962215FF419C003B7894 /* UMViewController.xib */,
+				5003961415FF419C003B7894 /* Supporting Files */,
+			);
+			path = HorizontalTableViewTest;
+			sourceTree = "<group>";
+		};
+		5003961415FF419C003B7894 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5003961515FF419C003B7894 /* HorizontalTableViewTest-Info.plist */,
+				5003961615FF419C003B7894 /* InfoPlist.strings */,
+				5003961915FF419C003B7894 /* main.m */,
+				5003961B15FF419C003B7894 /* HorizontalTableViewTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5003960815FF419C003B7894 /* HorizontalTableViewTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5003962715FF419C003B7894 /* Build configuration list for PBXNativeTarget "HorizontalTableViewTest" */;
+			buildPhases = (
+				5003960515FF419C003B7894 /* Sources */,
+				5003960615FF419C003B7894 /* Frameworks */,
+				5003960715FF419C003B7894 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HorizontalTableViewTest;
+			productName = HorizontalTableViewTest;
+			productReference = 5003960915FF419C003B7894 /* HorizontalTableViewTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5003960015FF419B003B7894 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 5003960315FF419B003B7894 /* Build configuration list for PBXProject "HorizontalTableViewTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 500395FE15FF419B003B7894;
+			productRefGroup = 5003960A15FF419C003B7894 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5003960815FF419C003B7894 /* HorizontalTableViewTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5003960715FF419C003B7894 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5003961815FF419C003B7894 /* InfoPlist.strings in Resources */,
+				5003962415FF419C003B7894 /* UMViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5003960515FF419C003B7894 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5003961A15FF419C003B7894 /* main.m in Sources */,
+				5003961E15FF419C003B7894 /* UMAppDelegate.m in Sources */,
+				5003962115FF419C003B7894 /* UMViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5003961615FF419C003B7894 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5003961715FF419C003B7894 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5003962215FF419C003B7894 /* UMViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5003962315FF419C003B7894 /* en */,
+			);
+			name = UMViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5003962515FF419C003B7894 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5003962615FF419C003B7894 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5003962815FF419C003B7894 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HorizontalTableViewTest/HorizontalTableViewTest-Prefix.pch";
+				INFOPLIST_FILE = "HorizontalTableViewTest/HorizontalTableViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5003962915FF419C003B7894 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HorizontalTableViewTest/HorizontalTableViewTest-Prefix.pch";
+				INFOPLIST_FILE = "HorizontalTableViewTest/HorizontalTableViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5003960315FF419B003B7894 /* Build configuration list for PBXProject "HorizontalTableViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5003962515FF419C003B7894 /* Debug */,
+				5003962615FF419C003B7894 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5003962715FF419C003B7894 /* Build configuration list for PBXNativeTarget "HorizontalTableViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5003962815FF419C003B7894 /* Debug */,
+				5003962915FF419C003B7894 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5003960015FF419B003B7894 /* Project object */;
+}
