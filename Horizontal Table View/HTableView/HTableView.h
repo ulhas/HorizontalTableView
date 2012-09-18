@@ -35,14 +35,12 @@
 
 @end
 
-
-@interface HTableView : UIView <HTableViewCellDelegate> {
-    
-}
+@interface HTableView : UIView
 
 @property (nonatomic, assign) IBOutlet id<HTableViewDataSource> dataSource;
 @property (nonatomic, assign) IBOutlet id<HTableViewDelegate> delegate;
 
 - (void)reloadData;
+- (HTableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 
 @end

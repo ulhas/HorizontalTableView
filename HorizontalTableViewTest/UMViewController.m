@@ -11,10 +11,13 @@
 @interface UMViewController ()
 
 - (void)setupHorizontalTableView;
+@property (nonatomic, retain) HTableView *hTableView;
 
 @end
 
 @implementation UMViewController
+
+@synthesize hTableView = _hTableView;
 
 - (void)didReceiveMemoryWarning
 {
@@ -64,6 +67,19 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (void)dealloc
+{
+    [_hTableView release], _hTableView = nil;
+    [super dealloc];
+}
+
+#pragma mark - View Controller Methods
+
+- (IBAction)reloadTableViewButtonClicked:(UIButton *)sender
+{
+    [self.hTableView reloadData];
+}
+
 #pragma mark - Horizontal Table View Datasource
 
 - (NSInteger)numberOfColumnsInHTableView:(HTableView *)hTableView
@@ -82,7 +98,13 @@
 
 - (HTableViewCell *)hTableView:(HTableView *)hTableView cellForColumnAtIndexPath:(NSIndexPath *)indexPath
 {
-    HTableViewCell *_horizontalCell = [[[HTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 0, hTableView.frame.size.height)] autorelease];
+    static NSString *identifier = @"indentifier";
+    
+    HTableViewCell *_horizontalCell = [hTableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (!_horizontalCell) {
+        _horizontalCell = [[[HTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 0, hTableView.frame.size.height)] autorelease];
+    }
     
     int _evenColumn = indexPath.column % 2;
     
@@ -111,15 +133,20 @@
 
 #pragma mark - Setup Methods
 
+- (HTableView *)hTableView
+{
+    if (!_hTableView) {
+        _hTableView = [[HTableView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, 150)];
+        _hTableView.dataSource = self;
+        _hTableView.delegate = self;
+    }
+    return _hTableView;
+}
+
 - (void)setupHorizontalTableView
 {
-    HTableView *_horizontableTableView = [[HTableView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, 150)];
-    _horizontableTableView.dataSource = self;
-    _horizontableTableView.delegate = self;
-    
-    [self.view addSubview:_horizontableTableView];
-    [_horizontableTableView reloadData];
-    [_horizontableTableView release], _horizontableTableView = nil;
+    [self.view addSubview:self.hTableView];
+    [self.hTableView reloadData];
 }
 
 @end

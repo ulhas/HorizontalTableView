@@ -11,4 +11,6 @@
 
 @interface UMViewController : UIViewController <HTableViewDataSource, HTableViewDelegate>
 
+- (IBAction)reloadTableViewButtonClicked:(UIButton *)sender;
+
 @end

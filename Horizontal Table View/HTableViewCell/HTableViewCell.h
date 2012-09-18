@@ -16,9 +16,7 @@
 
 @end
 
-@interface HTableViewCell : UIView {
-    
-}
+@interface HTableViewCell : UIView
 
 @property (nonatomic, assign) IBOutlet id<HTableViewCellDelegate> delegate;
 @property (nonatomic, assign) NSInteger index;
