@@ -108,13 +108,20 @@
 
 @interface HTableView () <HTableViewCellDelegate, UIScrollViewDelegate>
 
+#define DEFAULT_CONTENT_WIDTH 44.0f;
+
 @property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *reusableCellQueues;
+@property (nonatomic, assign) CGFloat contentWidth;
 
 - (void)clearScrollViewContents;
+- (void)calculateContentWidth;
+- (void)setScrollViewContentSize;
 
 - (HReusableCellQueue *)reusableCellQueueWithIdentifier:(NSString *)identifier;
 - (HReusableCellQueue *)createReusableCellQueueWithIdentifier:(NSString *)identifier;
+
+@property (nonatomic, readonly) NSInteger currentIndex;
 
 @end
 
@@ -124,6 +131,7 @@
 @synthesize delegate = _delegate;
 @synthesize reusableCellQueues = _reusableCellQueues;
 @synthesize scrollView = _scrollView;
+@synthesize contentWidth = _contentWidth;
 
 #pragma mark - Custom Methods
 
@@ -133,14 +141,16 @@
     
     NSInteger cellCount = [self.dataSource numberOfColumnsInHTableView:self];
     
+    [self clearScrollViewContents];
+    
     for (int index = 0; index < cellCount; index++) {
         NSIndexPath *_indexPath = [NSIndexPath indexPathForColumn:index];
         
         HTableViewCell *tableViewCell = [self.dataSource hTableView:self cellForColumnAtIndexPath:_indexPath];
         
         NSInteger _columnWidth;
-        if ([self.dataSource respondsToSelector:@selector(hTableView:widthForColumnAtIndexPath:)])
-            _columnWidth = [self.dataSource hTableView:self widthForColumnAtIndexPath:_indexPath];
+        if ([self.delegate respondsToSelector:@selector(hTableView:widthForColumnAtIndexPath:)])
+            _columnWidth = [self.delegate hTableView:self widthForColumnAtIndexPath:_indexPath];
         else
             _columnWidth = tableViewCell.frame.size.width;
         
@@ -230,6 +240,8 @@
 
 - (void)reloadData
 {
+//    [self calculateContentWidth];
+//    [self setScrollViewContentSize];
     [self clearScrollViewContents];
     [self setNeedsLayout];
 }
@@ -272,8 +284,44 @@
     for (UIView *_subView in self.scrollView.subviews) {
         [_subView removeFromSuperview];
     }
+}
+
+- (void)calculateContentWidth
+{
+    self.contentWidth = 0.0f;
     
-    self.scrollView.contentSize = CGSizeZero;
+    NSInteger cellCount = 0;
+    if ([self.dataSource respondsToSelector:@selector(numberOfColumnsInHTableView:)]) {
+        cellCount = [self.dataSource numberOfColumnsInHTableView:self];
+    } else
+        return;
+    
+    if (0 > cellCount)
+        return;
+    
+    for (int index = 0; index < cellCount; index++) {
+        if ([self.delegate respondsToSelector:@selector(hTableView:widthForColumnAtIndexPath:)]) {
+            NSIndexPath *_indexPath = [NSIndexPath indexPathForColumn:index];
+            
+            self.contentWidth += [self.delegate hTableView:self widthForColumnAtIndexPath:_indexPath];
+        } else {
+            self.contentWidth += DEFAULT_CONTENT_WIDTH; 
+        }
+    }
+}
+
+- (void)setScrollViewContentSize
+{
+    self.scrollView.contentSize = CGSizeMake(self.contentWidth, self.scrollView.bounds.size.height);
+}
+
+- (NSInteger)currentIndex
+{
+    CGFloat _minimumWidth = 1.0f;
+    
+    CGRect _currentIndexBound = CGRectMake(self.scrollView.contentOffset.x, self.scrollView.contentOffset.y, _minimumWidth, self.scrollView.bounds.size.height);
+    
+    return 0;
 }
 
 #pragma mark - End Horizontal Table View Implementation

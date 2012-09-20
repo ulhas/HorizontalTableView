@@ -87,23 +87,21 @@
     return 5;
 }
 
-- (CGFloat)hTableView:(HTableView *)hTableView widthForColumnAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (0 == indexPath.column % 2) {
-        return 100.0f;
-    }
-    
-    return 150.0f;
-}
-
 - (HTableViewCell *)hTableView:(HTableView *)hTableView cellForColumnAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"identifier";
     
     HTableViewCell *_horizontalCell = [hTableView dequeueReusableCellWithIdentifier:identifier];
     
+    CGFloat _width = 0.0f;
+    if (0 == indexPath.column % 2) {
+        _width = 100.0f;
+    } else {
+        _width = 150.0f;
+    }
+    
     if (!_horizontalCell) {
-        _horizontalCell = [[[HTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 0, hTableView.frame.size.height) andIdentifier:identifier] autorelease];
+        _horizontalCell = [[[HTableViewCell alloc] initWithFrame:CGRectMake(0, 0, _width, hTableView.frame.size.height) andIdentifier:identifier] autorelease];
     }
     
     int _evenColumn = indexPath.column % 2;
@@ -125,6 +123,15 @@
 }
 
 #pragma mark - Horizontal Table View Delegate
+
+- (CGFloat)hTableView:(HTableView *)hTableView widthForColumnAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (0 == indexPath.column % 2) {
+        return 100.0f;
+    }
+    
+    return 150.0f;
+}
 
 - (void)hTableView:(HTableView *)hTableView didSelectColumnAtIndexPath:(NSIndexPath *)indexPath
 {

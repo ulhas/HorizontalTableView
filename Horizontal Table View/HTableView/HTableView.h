@@ -16,14 +16,14 @@
 - (NSInteger)numberOfColumnsInHTableView:(HTableView *)hTableView;
 - (HTableViewCell *)hTableView:(HTableView *)hTableView cellForColumnAtIndexPath:(NSIndexPath *)indexPath;
 
-@optional
-- (CGFloat)hTableView:(HTableView *)hTableView widthForColumnAtIndexPath:(NSIndexPath *)indexPath;
-
 @end
 
 @protocol HTableViewDelegate <NSObject>
 
 - (void)hTableView:(HTableView *)hTableView didSelectColumnAtIndexPath:(NSIndexPath *)indexPath;
+
+@optional
+- (CGFloat)hTableView:(HTableView *)hTableView widthForColumnAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
