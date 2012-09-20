@@ -20,5 +20,8 @@
 
 @property (nonatomic, assign) IBOutlet id<HTableViewCellDelegate> delegate;
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, readonly, retain) NSString *identifier;
+
+- (id)initWithFrame:(CGRect)frame andIdentifier:(NSString *)identifier;
 
 @end

@@ -108,7 +108,10 @@
 
 @interface HTableView () <HTableViewCellDelegate, UIScrollViewDelegate>
 
+@property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *reusableCellQueues;
+
+- (void)clearScrollViewContents;
 
 - (HReusableCellQueue *)reusableCellQueueWithIdentifier:(NSString *)identifier;
 - (HReusableCellQueue *)createReusableCellQueueWithIdentifier:(NSString *)identifier;
@@ -120,17 +123,13 @@
 @synthesize dataSource = _dataSource;
 @synthesize delegate = _delegate;
 @synthesize reusableCellQueues = _reusableCellQueues;
+@synthesize scrollView = _scrollView;
 
 #pragma mark - Custom Methods
 
 - (void)layoutSubviews
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    UIScrollView *_horizontalScrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-    _horizontalScrollView.showsHorizontalScrollIndicator = NO;
-    _horizontalScrollView.showsVerticalScrollIndicator = NO;
-    _horizontalScrollView.delegate = self;
     
     NSInteger cellCount = [self.dataSource numberOfColumnsInHTableView:self];
     
@@ -145,20 +144,21 @@
         else
             _columnWidth = tableViewCell.frame.size.width;
         
-        CGSize _scrollViewContentSize = _horizontalScrollView.contentSize;
+        CGSize _scrollViewContentSize = self.scrollView.contentSize;
         
         tableViewCell.delegate = self;
         tableViewCell.index = index;
-        tableViewCell.frame = CGRectMake(_scrollViewContentSize.width, _horizontalScrollView.bounds.origin.y, _columnWidth, _horizontalScrollView.bounds.size.height);
+        tableViewCell.frame = CGRectMake(_scrollViewContentSize.width, self.scrollView.bounds.origin.y, _columnWidth, self.scrollView.bounds.size.height);
         
-        [_horizontalScrollView addSubview:tableViewCell];
+        [self.scrollView addSubview:tableViewCell];
         
         _scrollViewContentSize.width += tableViewCell.frame.size.width;
-        _horizontalScrollView.contentSize = _scrollViewContentSize;
+        self.scrollView.contentSize = _scrollViewContentSize;
     }
     
-    [self addSubview:_horizontalScrollView];
-    [_horizontalScrollView release], _horizontalScrollView = nil;
+    if (![self.scrollView.superview isEqual:self]) {
+        [self addSubview:self.scrollView];
+    }
     
     [pool drain];
 }
@@ -200,6 +200,7 @@
 
 - (void)dealloc
 {
+    [_scrollView release], _scrollView = nil;
     [_reusableCellQueues release], _reusableCellQueues = nil;
     [super dealloc];
 }
@@ -213,12 +214,23 @@
     return _reusableCellQueues;
 }
 
+- (UIScrollView *)scrollView
+{
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.delegate = self;
+    }
+    
+    return _scrollView;
+}
+
 #pragma mark - Table View Custom Methods
 
 - (void)reloadData
 {
-    UIScrollView *_horizontalScrollView = (UIScrollView *)[[[self subviews] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self isKindOfClass:%@", [UIScrollView class]]] lastObject];
-    [_horizontalScrollView removeFromSuperview];
+    [self clearScrollViewContents];
     [self setNeedsLayout];
 }
 
@@ -253,7 +265,16 @@
     return [_reusableCellQueue reusableCell];
 }
 
-#pragma mark - ScrollView Delegate Methods
+#pragma mark - ScrollView Methods
+
+- (void)clearScrollViewContents
+{
+    for (UIView *_subView in self.scrollView.subviews) {
+        [_subView removeFromSuperview];
+    }
+    
+    self.scrollView.contentSize = CGSizeZero;
+}
 
 #pragma mark - End Horizontal Table View Implementation
 

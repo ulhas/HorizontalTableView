@@ -98,12 +98,12 @@
 
 - (HTableViewCell *)hTableView:(HTableView *)hTableView cellForColumnAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"indentifier";
+    static NSString *identifier = @"identifier";
     
     HTableViewCell *_horizontalCell = [hTableView dequeueReusableCellWithIdentifier:identifier];
     
     if (!_horizontalCell) {
-        _horizontalCell = [[[HTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 0, hTableView.frame.size.height)] autorelease];
+        _horizontalCell = [[[HTableViewCell alloc] initWithFrame:CGRectMake(0, 0, 0, hTableView.frame.size.height) andIdentifier:identifier] autorelease];
     }
     
     int _evenColumn = indexPath.column % 2;

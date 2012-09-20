@@ -8,11 +8,17 @@
 
 #import "HTableViewCell.h"
 
+@interface HTableViewCell ()
+
+@property (nonatomic, readwrite, retain) NSString *identifier;
+
+@end
 
 @implementation HTableViewCell
 
 @synthesize delegate = _delegate;
 @synthesize index = _index;
+@synthesize identifier = _identifier;
 
 #pragma mark - Tap Gesture Methods
 
@@ -40,6 +46,16 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame andIdentifier:(NSString *)identifier
+{
+    self = [self initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        self.identifier = identifier;
+    }
+    return self;
+}
+
 - (void)awakeFromNib
 {
     [self setupTapGesture];
@@ -56,6 +72,7 @@
 
 - (void)dealloc
 {
+    [_identifier release], _identifier = nil;
     [super dealloc];
 }
 
